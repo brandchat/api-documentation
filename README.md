@@ -55,8 +55,8 @@ Or more succinctly: Create message, send.
 Learn more about:
 
 1. [Message signature](signature.md)
-2. Callback events (BrandChat to you)
-3. BrandChat API (you to BrandChat)
+2. [Event callbacks](callbacks.md) (BrandChat to you)
+3. [BrandChat API](api.md) (you to BrandChat)
 4. API limits
 5. Tips and tricks
 
