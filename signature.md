@@ -92,4 +92,4 @@ if ($signature != $referenceSignature) {
 
 ## Next steps
 
-Learn more about: [callback events](callbacks.md), or go back to the [README](README.md)
+Learn more about: [event callbacks](callbacks.md), or go back to the [README](README.md)
