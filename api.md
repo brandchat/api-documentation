@@ -145,23 +145,23 @@ The message objects for `image`, `voice`, and `video` messages can have either o
 
 1. The file you're sending is on a publicly exposed web route on your server:
 
-```json
+  ```json
 {
   "type": "image|voice|video",
   "userId": 1337,
   "url": "http://example.com/path/to/file"
 }
-```
+  ```
 
 2. You've previously uploaded the file to BrandChat's servers to obtain a re-usable `fileId`:
 
-```json
+  ```json
 {
   "type": "image|voice|video",
   "userId": 1337,
   "fileId": 123456789
 }
-```
+  ```
 
 Notes:
 
