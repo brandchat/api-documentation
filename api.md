@@ -12,7 +12,19 @@ The base URL for the BrandChat API is:
 
 `https://api.brandchat.social/api/`
 
-All the individual API calls are relative to that URL.
+All the routes for individual API calls are specified relative to the above URL.
+
+## Bot identifier
+
+On every request to the BrandChat API, please pass through the bot identifier (as given in the API section after logging in to the [BrandChat CMS](https://cms.brandchat.social)) as the `bot` parameter in the query string.
+
+For example, when doing a profile request to
+
+`https://api.brandchat.social/api/user/profile`
+
+add `?bot=MY_BOT_IDENTIFIER` to the URL, to get the final URL of:
+
+`https://api.brandchat.social/api/user/profile?bot=MY_BOT_IDENTIFIER`
 
 ## API signature
 
@@ -176,14 +188,14 @@ Notes:
 Allowed file sizes and content types are as follows (1 kB = 1024 bytes, 1 MB = 1024 kB):
 
 * For `image` messages:
-    * Max file size: 128 kB
-    * Allowed content types: `image/jpg`, `image/jpeg`, `image/png`
+    * *Max file size:* 128 kB
+    * *Allowed content types:* `image/jpg`, `image/jpeg`, `image/png`
 * For `voice` messages:
-    * Max file size: 256 kB
-    * Allowed content type: `audio/amr`
+    * *Max file size:* 256 kB
+    * *Allowed content type:* `audio/amr`
 * For `video` messages:
-    * Max file size: 1 MB
-    * Allow content type: `video/mp4`
+    * *Max file size:* 1 MB
+    * *Allow content type:* `video/mp4`
 
 #### audio messages
 
@@ -215,6 +227,6 @@ The same file size restrictions as described above
 }
 ```
 
-The obtained `fileId` may then be used when sending `image`, `voice` or `video` messages in future. At this stage, uploaded files do *not* expire, but we may limit the amount of files that may be stored.
+The obtained `fileId` may then be used when sending `image`, `voice` or `video` messages in future. At this stage, uploaded files do *not* expire, but we may limit the number and total size of files that may be stored.
 
 Please ensure that you can handle 64-bit integers for `fileId`. 

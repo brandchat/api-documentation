@@ -52,6 +52,28 @@ The request payload will have the following structure:
 
 The `userId` property contains a unique numeric identifier for this user on the BrandChat platform. Please ensure that you can accomodate 64-bit integers for this field. Also, please note that events for the *same* user will always contain the same `userId`.
 
+If, in response to a new subscription event, you want to send one or more reply messages back to a user (for example to welcome to your bot along with some instructions), please respond with the same message list structure as described in the [BrandChat API](api.md) specification. For example, to send two text messages and an image back to a user, you could respond with:
+
+```json
+[
+  {
+    "type": "text",
+    "userId": 1337,
+    "text": "Welcome to our cool bot. Here's what our bot does."
+  },
+  {
+    "type": "text",
+    "userId": 1337,
+    "text": "This message describes how you can use our bot."
+  },
+  {
+    "type": "image",
+    "userId": 1337,
+    "url": "http://example.com/path/to/a/cool/welcome.png"
+  }
+]
+```
+
 ### unsubscribe event
 
 `unsubscribe` events are emitted when a user unsubscribes from your bot.
@@ -72,14 +94,15 @@ The `userId` here is as defined for the `subscribe` event.
 
 ### message event
 
-`message` events have the following basic structure:
+`message` events have the following basic payload structure:
 
 ```json
 {
   "type": "message",
   "timestamp": 123456789,
   "message": {
-    "type": "text|image|voice|video|location"
+    "type": "text|image|voice|video|location",
+    "userId": 1337
   }
 }
 ```
@@ -87,6 +110,28 @@ The `userId` here is as defined for the `subscribe` event.
 The `message.type` property will indicate what type of message it is. This will allow you to parse the payload for the specific message type.
 
 Please note that additional message types may be added in future. Hence your system should gracefully handle (= ignore) unknown message types.
+
+If, in response to an incoming message from a user, you want to send one or more reply messages back to a user, please respond with the same message list structure as described in the [BrandChat API](api.md) specification. For example, to send two text messages and an image back to a user, you could respond with:
+
+```json
+[
+  {
+    "type": "text",
+    "userId": 1337,
+    "text": "This is the first reply message that the user will received."
+  },
+  {
+    "type": "text",
+    "userId": 1337,
+    "text": "This is the second reply message."
+  },
+  {
+    "type": "image",
+    "userId": 1337,
+    "url": "http://example.com/path/to/a/relevant.jpg"
+  }
+]
+```
 
 #### text message
 
@@ -98,6 +143,7 @@ Please note that additional message types may be added in future. Hence your sys
   "timestamp": 123456789,
   "message": {
     "type": "text",
+    "userId": 1337,
     "text": "the user's message"
   }
 }
@@ -115,11 +161,10 @@ The `text` property will contain the user's message.
   "timestamp": 123456789,
   "message": {
     "type": "image",
-    "image": {
-      "url": "http://example.com/path/to/image.jpg",
-      "contentType": "image/jpeg",
-      "size": 12345
-    }
+    "userId": 1337,
+    "url": "http://example.com/path/to/image.jpg",
+    "contentType": "image/jpeg",
+    "size": 12345
   }
 }
 ```
@@ -138,11 +183,10 @@ The `text` property will contain the user's message.
   "timestamp": 123456789,
   "message": {
     "type": "voice",
-    "voice": {
-      "url": "http://example.com/path/to/voice.amr",
-      "contentType": "audio/amr",
-      "size": 12345
-    }
+    "userId": 1337,
+    "url": "http://example.com/path/to/voice.amr",
+    "contentType": "audio/amr",
+    "size": 12345
   }
 }
 ```
@@ -161,11 +205,10 @@ The `text` property will contain the user's message.
   "timestamp": 123456789,
   "message": {
     "type": "video",
-    "video": {
-      "url": "http://example.com/path/to/video.mp4",
-      "contentType": "video/mp4",
-      "size": 12345
-    }
+    "userId": 1337,
+    "url": "http://example.com/path/to/video.mp4",
+    "contentType": "video/mp4",
+    "size": 12345
   }
 }
 ```
@@ -184,10 +227,9 @@ The `text` property will contain the user's message.
   "timestamp": 123456789,
   "message": {
     "type": "location",
-    "location": {
-      "latitude": 12.3456,
-      "longitude": -65.4321
-    }
+    "userId": 1337,
+    "latitude": 12.3456,
+    "longitude": -65.4321
   }
 }
 ```
