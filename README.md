@@ -56,7 +56,7 @@ Learn more about:
 
 1. [Message signature](signature.md)
 2. [Event callbacks](callbacks.md) (BrandChat to you)
-3. [BrandChat API](api.md) (you to BrandChat)
+3. [BrandChat API methods](api.md) (you to BrandChat)
 4. API limits
 5. Tips and tricks
 
