@@ -46,9 +46,9 @@ Notes:
 * Additional status codes may be added to better differentiate between different error conditions. Please handle any and all status codes gracefully.
 * While we attempt to include the `reason` property in all error responses, please do not rely on its presence or absence (or specific content) in your business logic.
 
-## Payloads
+## API methods
 
-### User profile
+### Retrieve user profile
 
 *Relative route:* `user/profile`
 
@@ -144,21 +144,21 @@ The string in the `text` property has a maximum character length of 1000 charact
 The message objects for `image`, `voice`, and `video` messages can have either of the following two structures, depending mostly on your preference on how to send the file.
 
 1. The file you're sending is on a publicly exposed web route on your server: 
-   ```json
-   {
-     "type": "image|voice|video",
-     "userId": 1337,
-     "url": "http://example.com/path/to/file"
-   }
-   ```
+```json
+{
+  "type": "image|voice|video",
+  "userId": 1337,
+  "url": "http://example.com/path/to/file"
+}
+```
 2. You've previously uploaded the file to BrandChat's servers to obtain a re-usable `fileId`:
-   ```json
-   {
-     "type": "image|voice|video",
-     "userId": 1337,
-     "fileId": 123456789
-   }
-   ```
+```json
+{
+  "type": "image|voice|video",
+  "userId": 1337,
+  "fileId": 123456789
+}
+```
 
 Notes:
 
@@ -190,7 +190,7 @@ TBC
 
 TBC
 
-### File uploads
+### Upload files
 
 *Relative route:* `file/upload`
 
