@@ -42,6 +42,18 @@ If at any time (like on a scheduled process), you want to send a message *to* a 
 
 Or more succinctly: Create message, send.
 
+## Web integration
+
+For messenger platforms that support web-views (currently Facebook Messenger, WeChat and Kik), you can configure the system to pass through a *one-time code* to a web-page you can configure on the BrandChat CMS. In this case, the flow is as follows:
+
+1. Configure a content item of type *External web page* under *Content* on the BrandChat CMS. The URL for the external web page should contain a substitution for `:code`, e.g. the URL could be http://example.com/my/route?code=:code
+2. Link that content to a menu or a keyword on the BrandChat CMS.
+3. When the user opens that content, BrandChat will authenticate the user.
+4. If we managed to authenticate the user, we will substitute `:code` in your configured URL with a one-time code.
+5. Your web-page can grab the code from the query string (and pass that code to your back-end, where relevant).
+6. Your back-end should then call BrandChat to claim the code.
+7. If the one-time code is valid, BrandChat will then respond with a user profile object.
+
 ## Basics of the API
 
 * With a single exception, every call (both to and from us), is an HTTP **POST** where the request body is the JSON-serialised payload.
@@ -57,8 +69,9 @@ Learn more about:
 1. [Message signature](signature.md)
 2. [Event callbacks](callbacks.md) (BrandChat to you)
 3. [BrandChat API methods](api.md) (you to BrandChat)
-4. API limits
-5. Tips and tricks
+4. [Web integration](web.md)
+5. API limits
+6. Tips and tricks
 
 ## Reference implementations
 
