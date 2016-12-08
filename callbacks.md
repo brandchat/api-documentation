@@ -257,7 +257,8 @@ The request payload will have the following structure:
     "province": "Western Cape",
     "city": "Stellenbosch",
     "isSubscribed": true,
-    "lastSubscribeTimestamp": 123456789
+    "lastSubscribeTimestamp": 123456789,
+    "platformIdentifier": "a_unique_identifier_from_the_platform"
   }
 }
 ```
@@ -274,6 +275,7 @@ The properties of the profile object are:
 * `city`: a string representing the user's city
 * `isSubscribed`: a boolean indicating whether the user is subscribed to your bot
 * `lastSubscribeTimestamp`: an integer representing the UNIX timestamp (seconds since epoch) when the user last subscribed to your bot (if at all; may be 0) 
+* `platformIdentifier`: a string representing a unique identifier of the user in the context of your bot, provided by the messaging platform. On WeChat, for example, this represents the user's *Open ID*.
 
 Please note that all of the above properties with the exception of the `userId` are retrieved from the user's messaging platform and hence may not necessarily be correct, consistent or complete.
 
