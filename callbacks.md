@@ -1,8 +1,8 @@
-# Event callbacks
+# Event webhook
 
-Whenever an event happens that should be of interest to you, we do a *callback* to the URL that you configured on the [BrandChat CMS](https://cms.brandchat.social).
+Whenever an event happens that should be of interest to you, we do a *callback* to the webhook URL that you configured on the [BrandChat CMS](https://cms.brandchat.social).
 
-The following events currently result in callbacks to you:
+The following events currently result in a webhook callback to you:
 
 * A user subscribes to your bot
 * A user unsubscribes from your bot
@@ -12,7 +12,7 @@ The following events currently result in callbacks to you:
 
 ## Basic information
 
-* Whenever a callback happens, BrandChat will do an HTTP POST to your callback URL.
+* Whenever a callback happens, BrandChat will do an HTTP POST to your webhook URL.
 * The request body will be a JSON-serialised representation of the event.
 * Every callback will be include the [signature](signature.md) which you should validate with your API key to ensure that the message came from BrandChat.
 * Every event payload object, irrespective of event type, contains at least the following two properties:

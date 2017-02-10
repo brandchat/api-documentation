@@ -49,6 +49,12 @@ $key = 'MY_API_KEY_GOES_HERE';
 $signature = hash_hmac_file('sha1', $filename, $key);
 ```
 
+### Important note about case sensitivity
+
+Signatures in requests *to* BrandChat will be compared case insensitively.
+
+*However*, it's important to note that the signatures that BrandChat includes in calls to your webhook will use **lowercase** hex digits (hexits). Some HMAC libraries (especially on Windows) seem to generate uppercase hexits. So please ensure that when verifying the signature, you do so in a case-insensitive manner (or convert the reference and calculated signatures to a known case before comparing them).
+
 ## Sending the signature
 
 When making requests *to* BrandChat, you need to send the signature in the `X-Chat-Signature` header.

@@ -67,7 +67,7 @@ For messenger platforms that support web-views (currently Facebook Messenger, We
 Learn more about:
 
 1. [Message signature](signature.md)
-2. [Event callbacks](callbacks.md) (BrandChat to you)
+2. [Event webhook](callbacks.md) (BrandChat to you)
 3. [BrandChat API methods](api.md) (you to BrandChat)
 4. [Web integration](web.md)
 5. API limits

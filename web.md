@@ -14,6 +14,8 @@ Claiming the one-time code in order to receive the user profile is an API call s
 
 Please also familiarise yourself the [API documentation](api.md) for more details regarding the API base URL, bot identifier, API signature, and response status codes.
 
+*Important note:* The `:code` substitution in the URL as described in point 1 in the above list is *only* done for content configured for *External web page* content items. URLs in other content types, or URLs appearing in link lists are **not** processed for user authentication. If you need to link an authenticated URL (with `:code` substitution) into a link list, first create an *External web page* content item, and the select that item as the *Content* target for an item in your link list content.
+
 ## Claim one-time code for a user profile
 
 *Relative route:* `code/claim`
